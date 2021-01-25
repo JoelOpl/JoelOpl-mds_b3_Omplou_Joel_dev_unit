@@ -11,16 +11,16 @@ test('isAnagram function exists', () => {
 });
 
 test('"cinema" is an anagram of "iceman"', () => {
-  expect(isAnagram('cinema','iceman')).toBe(true)
+  expect(isAnagram('cinema','iceman')).toBeTruthy();
 
 });
 
 test('"Dormitory" is an anagram of "dirty room##"', () => {
-  expect(isAnagram('Dormitory','dirty room##' )).toBe(true);
+  expect(isAnagram('Dormitory','dirty room##' )).toBeTruthy();
 });
 
 test('"Hello" is NOT an anagram of "Aloha"', () => {
-  expect(isAnagram('Hello','Aloha' )).toBe(false);
+  expect(isAnagram('Hello','Aloha' )).toBeFalsy();
 });
 
 /*
@@ -51,7 +51,7 @@ describe('Checking Names', () => {
 
 test('Adds 2 + 2 to equal 4', () => {
   const value = 2 + 2;
-  expect(value).toEqual(4);
+  expect(functions.add(2,2)).toEqual(4);
 });
 
 test('Adds 2 + 2 to NOT equal 5', () => {
@@ -73,32 +73,33 @@ test('Adds 2 + 2 to NOT equal 5', () => {
 // toBeFalsy matches anything that an if statement treats as false
 
 test('Should be null', () => {
-  const n = null;
-  expect(n).toBeNull();
+  expect(functions.isNull()).toBeFalsy();
 });
 
 // toBeFalsy
 test('Should be falsy', () => {
-  const a = false
-  expect(a).toBeFalsy();
+  expect(functions.isNull()).toBeFalsy();
 });
 
 // toEqual
 test('User should be Marc Antoine object', () => {
-  const user = 'Marc Antoine';
-  expect(user).toEqual('Marc Antoine')
+  expect(functions.createUser()).toEqual({
+    firstName: 'Marc', 
+    lastName: 'Antoine'
+  })
 });
 
 // Less than and greater than
 test('Should be under or equal 1000', () => {
   const load1 = 500;
   const load2 = 500;
-  expect(load1 + load2).toBeLessThanOrEqual(1000);
+  expect(load1).toBeLessThanOrEqual(1000);
+  expect(load2).toBeLessThanOrEqual(1000);
 });
 
 // Regex
 test('There is no I in the word team', () => {
-  expect('team').not.toMatch(/I/);
+  expect(functions.checkValue('team')).not.toMatch(/I/);
 });
 
 // Arrays
@@ -132,5 +133,5 @@ test('String reverses', () => {
 });
 
 test('String reverses with uppercase', () => {
-  expect(reverseString('Salut')).toEqual('tulas');
+  expect(reverseString('SALUT')).toEqual('tulas');
 });
